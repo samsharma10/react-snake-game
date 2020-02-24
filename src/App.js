@@ -67,8 +67,20 @@ class App extends Component{
     dots.shift();
     this.setState({
       snakeDots: dots
-    })
+    });
   }
+
+checkIfOutOfBorders(){
+  let head = this.state.snakeDots[this.state.snakeDots.length -1];
+  if(head[0] >= 100 || head[1] >= 100 || head[0] < 0 || head[1]<0){
+    this.onGameOver();
+  }
+}
+
+onGameOver(){
+  alert(`Game Over. Snake length is ${this.state.snakeDots.length}`);
+}
+
   render(){
   return (
     <div className="game-area">
